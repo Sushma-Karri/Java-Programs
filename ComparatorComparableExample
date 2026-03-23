@@ -1,0 +1,48 @@
+import java.util.*;
+
+class Student implements Comparable<Student> {
+    int marks;
+    String name;
+
+    Student(String name, int marks) {
+        this.name = name;
+        this.marks = marks;
+    }
+
+    // Comparable (natural sorting - ascending marks)
+    public int compareTo(Student s) {
+        return this.marks - s.marks;
+    }
+}
+
+// Comparator (custom sorting - descending marks)
+class DescendingComparator implements Comparator<Student> {
+    public int compare(Student s1, Student s2) {
+        return s2.marks - s1.marks;
+    }
+}
+
+public class Demo {
+    public static void main(String[] args) {
+
+        ArrayList<Student> list = new ArrayList<>();
+
+        list.add(new Student("A", 80));
+        list.add(new Student("B", 50));
+        list.add(new Student("C", 70));
+
+        // Comparable sorting
+        Collections.sort(list);
+        System.out.println("Ascending (Comparable):");
+        for (Student s : list) {
+            System.out.println(s.name + " " + s.marks);
+        }
+
+        // Comparator sorting
+        Collections.sort(list, new DescendingComparator());
+        System.out.println("\nDescending (Comparator):");
+        for (Student s : list) {
+            System.out.println(s.name + " " + s.marks);
+        }
+    }
+}
