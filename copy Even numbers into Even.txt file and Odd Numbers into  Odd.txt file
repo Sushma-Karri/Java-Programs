@@ -1,0 +1,34 @@
+import java.io.*;
+import java.util.Scanner;
+
+class EvenOddFile {
+    public static void main(String[] args) throws IOException {
+
+        Scanner sc = new Scanner(System.in);
+
+        // Files create
+        FileWriter evenFile = new FileWriter("Even.txt");
+        FileWriter oddFile = new FileWriter("Odd.txt");
+
+        System.out.print("Enter number of elements: ");
+        int n = sc.nextInt();
+
+        System.out.println("Enter numbers:");
+
+        for (int i = 0; i < n; i++) {
+            int num = sc.nextInt();
+
+            if (num % 2 == 0) {
+                evenFile.write(num + "\n"); // even file
+            } else {
+                oddFile.write(num + "\n");  // odd file
+            }
+        }
+
+        evenFile.close();
+        oddFile.close();
+        sc.close();
+
+        System.out.println("Numbers written to files successfully!");
+    }
+}
